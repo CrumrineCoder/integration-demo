@@ -1,0 +1,12 @@
+services: 
+  service-a:
+    build: ./service-a
+    ports:
+      - "5002:5000"
+    depends_on:
+      - service-b
+  
+  service-b: 
+    build: ./service-b
+    ports:
+      - "5001:5001"
