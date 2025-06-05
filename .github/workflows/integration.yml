@@ -27,7 +27,7 @@ jobs:
               run: docker-compose up -d --build
 
             - name: Wait for Service A
-              run: curl --retry 10 --retry-connrefused --retry-delay 3 http://localhost:5000/trigger
+              run: curl --retry 10 --retry-connrefused --retry-delay 3 http://service-a:5000/trigger
 
             - name: Run integration tests
               run: |
