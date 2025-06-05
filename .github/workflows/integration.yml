@@ -26,8 +26,10 @@ jobs:
             - name: Build and Start Services
               run: docker-compose up -d --build
 
-            - name: Wait for Service A
-              run: curl --retry 10 --retry-connrefused --retry-delay 3 http://service-a:5000/trigger
+            - name: Wait for Service A health
+              run: |
+                    docker-compose ps
+                    docker-compose exec service-a curl -s http://localhost:5000/trigger
 
             - name: Run integration tests
               run: |
